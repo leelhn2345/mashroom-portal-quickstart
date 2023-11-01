@@ -1,0 +1,42 @@
+@use "variables";
+
+@mixin flex-row-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.header {
+    overflow: hidden;
+    background-color: rgb(80, 71, 199);
+    @include flex-row-start();
+    a {
+        float: left;
+        font-size: variables.$md;
+        color: variables.$color;
+        text-align: center;
+        padding: 10px 16px;
+        text-decoration: none;
+    }
+    &__nav {
+        @include flex-row-start();
+    }
+}
+.dropdown {
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+}
+
+// .dropdown__content {
+//     display: none;
+//     position: absolute;
+//     background-color: #f9f9f9;
+//     min-width: 160px;
+//     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+//     z-index: 1;
+// }
+
+.footer {
+    background-color: brown;
+}
