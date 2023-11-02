@@ -1,42 +1,52 @@
 <!doctype html>
 <html>
+
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta name="description" content="{{model.page.description}}">
     <meta name="keywords" content="{{model.page.keywords}}">
     {{#if csrfToken}}
-        <meta name="csrf-token" content="{{csrfToken}}">
+    <meta name="csrf-token" content="{{csrfToken}}">
     {{/if}}
 
     <title>{{site.title}} - {{page.title}}</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{resourcesBasePath}}/assets/logo-white.ico">
 
-    <link rel="stylesheet" type="text/css" href="{{resourcesBasePath}}/fontawesome/css/regular.css?v={{fontawesomeVersion}}">
-    <link rel="stylesheet" type="text/css" href="{{resourcesBasePath}}/fontawesome/css/solid.css?v={{fontawesomeVersion}}">
+    <link rel="stylesheet" type="text/css"
+        href="{{resourcesBasePath}}/fontawesome/css/regular.css?v={{fontawesomeVersion}}">
+    <link rel="stylesheet" type="text/css"
+        href="{{resourcesBasePath}}/fontawesome/css/solid.css?v={{fontawesomeVersion}}">
     {{{inlineStyle 'portal.css'}}}
     {{#if user.admin}}
-        <link rel="stylesheet" type="text/css" href="{{resourcesBasePath}}/admin.css?v={{themeVersionHash}}">
+    <link rel="stylesheet" type="text/css" href="{{resourcesBasePath}}/admin.css?v={{themeVersionHash}}">
     {{/if}}
 
     {{{portalResourcesHeader}}}
 
     {{#if page.extraCss}}
-        <style type="text/css">
-            {{{page.extraCss}}}
-        </style>
+    <style type="text/css">
+        {
+                {
+                    {
+                    page.extraCss
+                }
+            }
+        }
+    </style>
     {{/if}}
 
     <script type="application/javascript" src="{{resourcesBasePath}}/main.js?v={{themeVersionHash}}"></script>
 </head>
+
 <body>
     {{#if adminApp}}
-        <div id="mashroom-portal-admin-app-container">
-            <!-- Admin app goes here -->
-        </div>
+    <div id="mashroom-portal-admin-app-container">
+        <!-- Admin app goes here -->
+    </div>
     {{/if}}
     <header>
         <div class="logo">
@@ -45,28 +55,29 @@
         <div class="site-name">
             <h1>{{site.title}}</h1>
         </div>
+        {{> navigation}}
         {{#ifShowEnvAndVersions}}
-            <div class="env-and-versions">
-                <div class="env">Environment: {{env}}</div>
-                <div class="versions">Server version: {{mashroomVersion}}, <a href="javascript:void(0)" onclick="toggleShowAppVersions()">App versions</a></div>
-            </div>
+        <div class="env-and-versions">
+            <div class="env">Environment: {{env}}</div>
+            <div class="versions">Server version: {{mashroomVersion}}, <a href="javascript:void(0)"
+                    onclick="toggleShowAppVersions()">App versions</a></div>
+        </div>
         {{/ifShowEnvAndVersions}}
         {{#if user.guest}}
         {{else}}
-            <div class="user">
-                <div class="user-name">
-                    {{user.displayName}}
-                </div>
-                <div class="logout">
-                    <a href="{{apiBasePath}}/logout">{{__ messages "logout"}}</a>
-                </div>
+        <div class="user">
+            <div class="user-name">
+                {{user.displayName}}
             </div>
+            <div class="logout">
+                <a href="{{apiBasePath}}/logout">{{__ messages "logout"}}</a>
+            </div>
+        </div>
         {{/if}}
         <div class="menu-open" onclick="toggleMenu()"></div>
     </header>
 
     <main>
-        {{> navigation}}
 
         <div id="portal-page-content" class="mashroom-portal-apps-container container-fluid">
             {{{pageContent}}}
@@ -101,4 +112,5 @@
 
     {{{portalResourcesFooter}}}
 </body>
+
 </html>
