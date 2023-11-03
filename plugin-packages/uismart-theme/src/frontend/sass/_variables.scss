@@ -27,9 +27,9 @@ $FONT_ICON: "Font Awesome 6 Free";
 $GUTTER_WIDTH: 15px;
 
 @mixin hover-animation() {
-    transition: color 500ms ease-out, background-color 500ms ease-out;
+  transition: color 500ms ease-out, background-color 500ms ease-out;
 }
 
 @mixin focus-animation() {
-    transition: color 500ms ease-out, border-color 500ms ease-out;
+  transition: color 500ms ease-out, border-color 500ms ease-out;
 }

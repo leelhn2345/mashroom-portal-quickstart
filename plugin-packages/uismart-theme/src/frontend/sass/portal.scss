@@ -10,12 +10,12 @@
 @use "node_modules/bootstrap/scss/bootstrap-grid";
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 // header {
 //     display: flex;
@@ -116,150 +116,182 @@
 // }
 
 .header {
-    background-color: $COLOR_PRIMARY;
-    color: $COLOR_WHITE;
-    border-bottom: 2px solid $COLOR_SECONDARY;
+  background-color: $COLOR_PRIMARY;
+  color: $COLOR_WHITE;
+  border-bottom: 2px solid $COLOR_SECONDARY;
+  position: relative;
+
+  &__logo {
+    display: none;
+
+    svg {
+      display: inline-block;
+      width: 30px;
+      height: 22.5px;
+      margin-left: 15px;
+    }
+  }
+
+  &__site-name {
+    h1 {
+      display: inline-block;
+      padding: 16px $GUTTER_WIDTH 0 $GUTTER_WIDTH;
+      font-size: 1em;
+      white-space: nowrap;
+      font-weight: 400;
+      overflow: hidden; /* Hide overflow content */
+      text-overflow: ellipsis;
+    }
+  }
+  nav {
+    flex-grow: 1;
+    padding-top: 10px;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1em;
+
+      li {
+        list-style-type: none;
+
+        a {
+          color: $COLOR_WHITE;
+          font-weight: 500;
+          font-size: 1.3em;
+          display: block;
+          text-decoration: none;
+
+          &:hover {
+            color: $COLOR_SECONDARY_DARK;
+          }
+          &.active {
+            text-decoration-line: underline;
+          }
+        }
+      }
+    }
+  }
+  &__env-and-versions {
+    font-size: 0.8em;
+    line-height: 1.2em;
+    margin-left: $GUTTER_WIDTH;
+    padding: 10px 0;
+
+    a,
+    a:hover,
+    a:active {
+      color: white;
+    }
+  }
+  &__user {
+    padding: 0 20px 10px 20px;
+    margin-left: $GUTTER_WIDTH;
+    display: flex;
+    align-items: center;
     position: relative;
 
-    &__logo {
-        display: none;
-
-        svg {
-            display: inline-block;
-            width: 30px;
-            height: 22.5px;
-            margin-left: 15px;
-        }
+    &::before {
+      position: absolute;
+      display: inline-block;
+      font-family: $FONT_ICON;
+      font-weight: 900;
+      content: "\f007";
+      color: $COLOR_WHITE;
+      left: 0;
     }
+    .logout {
+      padding-left: 10px;
 
-    &__site-name {
-        h1 {
-            display: inline-block;
-            padding: 16px $GUTTER_WIDTH 0 $GUTTER_WIDTH;
-            font-size: 1em;
-            font-weight: 400;
-        }
-    }
-    &__env-and-versions {
+      a {
+        display: block;
+        color: $COLOR_WHITE;
         font-size: 0.8em;
-        line-height: 1.2em;
-        margin-left: $GUTTER_WIDTH;
-        padding: 10px 0;
-
-        a,
-        a:hover,
-        a:active {
-            color: white;
-        }
+      }
     }
+  }
+  &__menu-open {
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    padding: 2px 5px;
+
+    &::before {
+      content: "\f142";
+      font-family: $FONT_ICON;
+      font-size: 1.2em;
+      font-weight: 900;
+    }
+  }
+}
+
+main {
+  margin: 20px 0;
+}
+
+@media (min-width: 576px) {
+  .header {
+    display: flex;
+    align-items: center;
+
+    &__logo {
+      display: block;
+    }
+    &__site-name {
+      h1 {
+        font-size: 1.2em;
+        padding: 16px $GUTTER_WIDTH 8px $GUTTER_WIDTH;
+      }
+    }
+
+    &__env-and_versions {
+      padding: 0 20px;
+      margin: 0;
+    }
+
     &__user {
-        padding: 0 20px 10px 20px;
-        margin-left: $GUTTER_WIDTH;
-        display: flex;
-        align-items: center;
-        position: relative;
+      display: block;
+      padding-top: 10px;
+      padding-left: 34px;
+      margin-bottom: 8px;
 
-        &::before {
-            position: absolute;
-            display: inline-block;
-            font-family: $FONT_ICON;
-            font-weight: 900;
-            content: "\f007";
-            color: $COLOR_WHITE;
-            left: 0;
-        }
-        .logout {
-            padding-left: 10px;
+      &::before {
+        font-size: 1.6em;
+        top: 14px;
+      }
 
-            a {
-                display: block;
-                color: $COLOR_WHITE;
-                font-size: 0.8em;
-            }
-        }
+      .user-name {
+        text-align: right;
+      }
+
+      .logout {
+        text-align: right;
+        margin-top: -3px;
+      }
     }
     &__menu-open {
-        cursor: pointer;
-        position: absolute;
-        bottom: 5px;
-        right: 10px;
-        padding: 2px 5px;
-
-        &::before {
-            content: "\f142";
-            font-family: $FONT_ICON;
-            font-size: 1.2em;
-            font-weight: 900;
-        }
+      display: none;
     }
-}
-@media (min-width: 576px) {
-    .header {
-        display: flex;
-        align-items: center;
+  }
+  main {
+    display: flex;
+  }
 
-        &__logo {
-            display: block;
-        }
-        &__site-name {
-            flex-grow: 1;
-
-            h1 {
-                font-size: 1.2em;
-                padding: 16px $GUTTER_WIDTH 8px $GUTTER_WIDTH;
-            }
-        }
-        &__env-and_versions {
-            padding: 0 20px;
-            margin: 0;
-        }
-
-        &__user {
-            display: block;
-            padding-top: 10px;
-            padding-left: 34px;
-
-            &::before {
-                font-size: 1.6em;
-                top: 14px;
-            }
-
-            .user-name {
-                text-align: right;
-            }
-
-            .logout {
-                text-align: right;
-                margin-top: -3px;
-            }
-        }
-        &__menu-open {
-            display: none;
-        }
-    }
-    main {
-        display: flex;
-
-        nav {
-            margin-bottom: 0;
-            display: block;
-            margin-right: span math.div($GUTTER_WIDTH, 2);
-            margin-top: 0;
-        }
-    }
-
-    #mashroom-portal-auth-expires-warning {
-        left: calc(50% - 240px);
-        width: 480px;
-    }
+  #mashroom-portal-auth-expires-warning {
+    left: calc(50% - 240px);
+    width: 480px;
+  }
 }
 
 @media (min-width: 768px) {
-    .header {
-        &__site-name {
-            h1 {
-                font-size: 2em;
-            }
-        }
+  .header {
+    &__site-name {
+      h1 {
+        font-size: 2em;
+      }
     }
+  }
 }
