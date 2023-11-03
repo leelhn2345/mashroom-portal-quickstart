@@ -48,16 +48,16 @@
         <!-- Admin app goes here -->
     </div>
     {{/if}}
-    <header>
-        <div class="logo">
+    <header class="header">
+        <div class="header__logo">
             {{{ inlineSVG 'logo-white.svg'}}}
         </div>
-        <div class="site-name">
+        <div class="header__site-name">
             <h1>{{site.title}}</h1>
         </div>
-        {{> navigation}}
+        {{!-- {{> navigation}} --}}
         {{#ifShowEnvAndVersions}}
-        <div class="env-and-versions">
+        <div class="header__env-and-versions">
             <div class="env">Environment: {{env}}</div>
             <div class="versions">Server version: {{mashroomVersion}}, <a href="javascript:void(0)"
                     onclick="toggleShowAppVersions()">App versions</a></div>
@@ -65,7 +65,7 @@
         {{/ifShowEnvAndVersions}}
         {{#if user.guest}}
         {{else}}
-        <div class="user">
+        <div class="header__user">
             <div class="user-name">
                 {{user.displayName}}
             </div>
@@ -74,7 +74,7 @@
             </div>
         </div>
         {{/if}}
-        <div class="menu-open" onclick="toggleMenu()"></div>
+        <div class="header__menu-open" onclick="toggleMenu()"></div>
     </header>
 
     <main>
