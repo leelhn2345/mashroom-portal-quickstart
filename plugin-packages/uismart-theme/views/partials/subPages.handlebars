@@ -1,0 +1,38 @@
+<ul class="navSubPage">
+  {{#each this}}
+  {{#unless hidden}}
+  <li class="navItem">
+    {{#equals pageId @root.page.pageId}}
+    {{#ifSpaMode}}
+    <a class="active" href="{{@root.siteBasePath}}{{friendlyUrl}}"
+      onclick="return replacePageContent('{{pageId}}', '{{@root.siteBasePath}}{{friendlyUrl}}')"
+      data-mr-page-id="{{pageId}}">
+
+      {{title}}
+
+    </a>
+    {{else}}
+    <a class="active" href="" onclick="return false">
+
+      {{title}}
+
+    </a>
+    {{/ifSpaMode}}
+    {{else}}
+    {{#ifSpaMode}}
+    <a href="{{@root.siteBasePath}}{{friendlyUrl}}"
+      onclick="return replacePageContent('{{pageId}}', '{{@root.siteBasePath}}{{friendlyUrl}}')"
+      data-mr-page-id="{{pageId}}">
+      {{title}}
+    </a>
+    {{else}}
+    <a href="{{@root.siteBasePath}}{{friendlyUrl}}">
+      {{title}}
+    </a>
+    {{/ifSpaMode}}
+    {{/equals}}
+
+  </li>
+  {{/unless}}
+  {{/each}}
+</ul>

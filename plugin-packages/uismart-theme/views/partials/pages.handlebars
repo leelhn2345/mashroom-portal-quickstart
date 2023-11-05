@@ -1,7 +1,7 @@
 <ul>
   {{#each this}}
   {{#unless hidden}}
-  <li class="">
+  <li class="navPage">
     {{#equals pageId @root.page.pageId}}
     {{#ifSpaMode}}
     <a class="active" href="{{@root.siteBasePath}}{{friendlyUrl}}"
